@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1767353625 source:c:\users\bogom\unipdf\3eme annee\graphs\sokoban_base_09_12_2025\graphicallegro5.cpp
+	"GraphicAllegro5.h"
+	<iostream>
+
+1767353625 c:\users\bogom\unipdf\3eme annee\graphs\sokoban_base_09_12_2025\graphicallegro5.h
+	<allegro5/allegro5.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_font.h>
+	<string>
+	<iostream>
+	<vector>
+
+1767363634 source:c:\users\bogom\unipdf\3eme annee\graphs\sokoban_base_09_12_2025\main.cpp
+	"Maze.h"
+	"GraphicAllegro5.h"
+
+1767353625 c:\users\bogom\unipdf\3eme annee\graphs\sokoban_base_09_12_2025\maze.h
+	<string>
+	<vector>
+	"GraphicAllegro5.h"
+
+1767353625 source:c:\users\bogom\unipdf\3eme annee\graphs\sokoban_base_09_12_2025\maze.cpp
+	"Maze.h"
+	"GraphicAllegro5.h"
+	<fstream>
+	<exception>
+

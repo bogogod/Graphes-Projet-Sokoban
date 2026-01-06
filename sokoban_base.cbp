@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="sokoban_base" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc-mingw64" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/sokoban_base" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc-mingw64" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="allegro_font-5.2.dll" />
+					<Add option="allegro_image-5.2.dll" />
+					<Add option="allegro_primitives-5.2.dll" />
+					<Add option="allegro-5.2.dll" />
+					<LinkerExe value="Linker" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/sokoban_base" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc-mingw64" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Linker>
+			<Add library="../allegro-x86_64-w64-mingw32-gcc-14.2.0-posix-seh-dynamic-5.2.10.0/allegro/lib/liballegro.dll.a" />
+			<Add library="../allegro-x86_64-w64-mingw32-gcc-14.2.0-posix-seh-dynamic-5.2.10.0/allegro/lib/liballegro_font.dll.a" />
+			<Add library="../allegro-x86_64-w64-mingw32-gcc-14.2.0-posix-seh-dynamic-5.2.10.0/allegro/lib/liballegro_primitives.dll.a" />
+			<Add library="../allegro-x86_64-w64-mingw32-gcc-14.2.0-posix-seh-dynamic-5.2.10.0/allegro/lib/liballegro_image.dll.a" />
+		</Linker>
+		<Unit filename="GraphicAllegro5.cpp" />
+		<Unit filename="GraphicAllegro5.h" />
+		<Unit filename="Maze.cpp" />
+		<Unit filename="Maze.h" />
+		<Unit filename="main.cpp" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
