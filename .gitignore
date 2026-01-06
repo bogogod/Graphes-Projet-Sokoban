@@ -2,3 +2,4 @@
 dll/
 bin/
 *.exe
+.vscode/
