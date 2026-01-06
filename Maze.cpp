@@ -229,3 +229,33 @@ void Maze::playSolution(GraphicAllegro5& g, const std::vector<char>& movesSoluti
         g.display();
     }
 }
+
+bool Maze::isDeadlock(const std::pair<int, int>& box) const
+{
+    // Check if box is already on a goal
+    if (this->isGoal(box))
+        return false;
+
+    // Check for corner deadlock (box stuck between two walls)
+    bool topWall = this->isWall({box.first - 1, box.second});
+    bool bottomWall = this->isWall({box.first + 1, box.second});
+    bool leftWall = this->isWall({box.first, box.second - 1});
+    bool rightWall = this->isWall({box.first, box.second + 1});
+
+    if ((topWall || bottomWall) && (leftWall || rightWall))
+        return true;
+
+    return false;
+}
+
+bool Maze::isDeadlockMaze(const std::vector<std::pair<int, int>>& boxes) const
+{
+    // Check for corner deadlocks
+    for (const auto& box : boxes)
+    {
+        if (isDeadlock(box))
+            return true;
+    }
+
+    return false;
+}
