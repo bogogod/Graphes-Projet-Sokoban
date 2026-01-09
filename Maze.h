@@ -13,7 +13,8 @@ enum class SpriteType : unsigned char
 {
     GROUND = ' ', OUTSIDE = 'X',
     WALL = '#', PLAYER = '@', PLAYER_ON_GOAL = '+',
-    BOX = '$', BOX_PLACED = '*', GOAL = '.'
+    BOX = '$', BOX_PLACED = '*', GOAL = '.',
+    DEADLOCK = '!'
 };
 
 const std::vector<std::pair<int,int>> neighbours = {
