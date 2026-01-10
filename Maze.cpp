@@ -56,6 +56,22 @@ Maze::Maze(const std::string& levelPath)
     {
         throw std::out_of_range("Width or height too large !");
     }
+
+    for (unsigned int i = 0; i < this->m_lig; i++)
+    {
+        for (unsigned int j = 0; j < this->m_col; j++)
+        {
+            // If it is empty ground, check if it's a deadlock
+            if (this->m_field[i][j].sprite == SpriteType::GROUND)
+            {
+                // We cast to int because isDeadlock expects pairs of ints
+                if (isDeadlock({ (int)i, (int)j }))
+                {
+                    this->m_field[i][j].sprite = SpriteType::DEADLOCK;
+                }
+            }
+        }
+    }
 }
 
 void Maze::draw(GraphicAllegro5& g) const
@@ -76,6 +92,9 @@ void Maze::draw(GraphicAllegro5& g) const
             }
             else if (s.sprite == SpriteType::GOAL) {
                 g.drawT(g.getSprite(BITMAP_GOAL), j, i);
+            }
+            else if (s.sprite == SpriteType::DEADLOCK) {
+                g.drawT(g.getSprite(BITMAP_DEADLOCK), j, i);
             }
         }
     }
@@ -118,7 +137,8 @@ bool Maze::isGoal(const std::pair<int, int>& position) const
 bool Maze::isFree(const std::pair<int, int>& position) const
 {
     if (this->m_field[position.first][position.second].sprite == SpriteType::GROUND
-        || this->m_field[position.first][position.second].sprite == SpriteType::GOAL)
+        || this->m_field[position.first][position.second].sprite == SpriteType::GOAL
+        || this->m_field[position.first][position.second].sprite == SpriteType::DEADLOCK)
     {
         return true;
     }
@@ -153,6 +173,9 @@ bool Maze::pushBox(const std::pair<int, int>& position, char dir)
 
     // Can push ?
     if (this->isWall(newPosition))
+        return false;
+
+    if (this->isDeadlock(newPosition))
         return false;
 
     if (!this->isFree(newPosition))
@@ -228,4 +251,26 @@ void Maze::playSolution(GraphicAllegro5& g, const std::vector<char>& movesSoluti
         this->draw(g);
         g.display();
     }
+}
+
+bool Maze::isDeadlock(const std::pair<int, int>& position) const
+{
+    if (this->m_field[position.first][position.second].sprite == SpriteType::DEADLOCK)
+    {
+        return true;
+    }
+    // Check if position is already on a goal
+    if (this->isGoal(position))
+        return false;
+
+    // Check for corner deadlock (position stuck between two walls)
+    bool topWall = this->isWall({position.first - 1, position.second});
+    bool bottomWall = this->isWall({position.first + 1, position.second});
+    bool leftWall = this->isWall({position.first, position.second - 1});
+    bool rightWall = this->isWall({position.first, position.second + 1});
+
+    if ((topWall || bottomWall) && (leftWall || rightWall))
+        return true;
+
+    return false;
 }

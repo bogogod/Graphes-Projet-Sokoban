@@ -13,7 +13,8 @@ enum class SpriteType : unsigned char
 {
     GROUND = ' ', OUTSIDE = 'X',
     WALL = '#', PLAYER = '@', PLAYER_ON_GOAL = '+',
-    BOX = '$', BOX_PLACED = '*', GOAL = '.'
+    BOX = '$', BOX_PLACED = '*', GOAL = '.',
+    DEADLOCK = '!'
 };
 
 const std::vector<std::pair<int,int>> neighbours = {
@@ -58,6 +59,9 @@ class Maze
         bool isBox(const std::pair<int, int>& position) const;
         bool isGoal(const std::pair<int, int>& position) const;
         bool isFree(const std::pair<int, int>& position) const;
+
+        bool isDeadlock(const std::pair<int, int>& box) const;
+        bool isDeadlockMaze(const std::vector<std::pair<int, int>>& boxes) const;
 
         bool pushBox(const std::pair<int, int>& position, char dir);
 

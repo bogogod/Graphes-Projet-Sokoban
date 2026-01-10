@@ -21,6 +21,7 @@
 #define BITMAP_BOX                      2
 #define BITMAP_BOX_PLACED               3
 #define BITMAP_GOAL                     4
+#define BITMAP_DEADLOCK                 5
 
 #define COLOR_WHITE         al_map_rgb(255,255,255)
 #define COLOR_BLACK         al_map_rgb(0,0,0)
