@@ -4,7 +4,6 @@
 #include <iostream>
 
 GraphicAllegro5 graphic(1024, 768);
-
 // ---- Brute force ----
 static std::vector<char> bruteForce(const Maze& start, int maxLen)
 {
@@ -12,6 +11,8 @@ static std::vector<char> bruteForce(const Maze& start, int maxLen)
 
     for (int len = 1; len <= maxLen; ++len)
     {
+        std::cout << "Test des sequences de " << len << " coups..." << std::endl;
+
         long long total = 1;
         for (int i = 0; i < len; ++i) total *= 4;
 
@@ -29,19 +30,18 @@ static std::vector<char> bruteForce(const Maze& start, int maxLen)
                 x /= 4;
 
                 char dir = moves[d];
-
-                bool solved = m.updatePlayer(dir);
+                m.updatePlayer(dir);
                 seq.push_back(dir);
+            }
 
-                if (solved) {
-                    return seq;
-                }
+            if (m.isSolution()) {
+                std::cout << "Solution trouvee en " << len << " coups!" << std::endl;
+                return seq;
             }
         }
     }
     return {};
 }
-
 static int heuristic(const Maze& maze)
 {
     //premier test heuristique prend pas en compte les deadlocks et ne place pas de manière optimal
@@ -110,7 +110,6 @@ int main()
 
             if (!sol.empty())
             {
-                std::cout << "Solution trouvee en " << sol.size() << " coups\n";
                 m.playSolution(graphic, sol);
             }
             else
