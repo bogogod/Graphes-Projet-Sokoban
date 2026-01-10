@@ -61,11 +61,9 @@ Maze::Maze(const std::string& levelPath)
     {
         for (unsigned int j = 0; j < this->m_col; j++)
         {
-            // If it is empty ground, check if it's a deadlock
             if (this->m_field[i][j].sprite == SpriteType::GROUND)
             {
-                // We cast to int because isDeadlock expects pairs of ints
-                if (isDeadlock({ (int)i, (int)j }))
+                if (checkDeadlockLogic({ (int)i, (int)j }))
                 {
                     this->m_field[i][j].sprite = SpriteType::DEADLOCK;
                 }
@@ -253,12 +251,8 @@ void Maze::playSolution(GraphicAllegro5& g, const std::vector<char>& movesSoluti
     }
 }
 
-bool Maze::isDeadlock(const std::pair<int, int>& position) const
+bool Maze::checkDeadlockLogic(const std::pair<int, int>& position) const
 {
-    if (this->m_field[position.first][position.second].sprite == SpriteType::DEADLOCK)
-    {
-        return true;
-    }
     // Check if position is already on a goal
     if (this->isGoal(position))
         return false;
@@ -271,6 +265,16 @@ bool Maze::isDeadlock(const std::pair<int, int>& position) const
 
     if ((topWall || bottomWall) && (leftWall || rightWall))
         return true;
+
+    return false;
+}
+
+bool Maze::isDeadlock(const std::pair<int, int>& position) const
+{
+    if (this->m_field[position.first][position.second].sprite == SpriteType::DEADLOCK)
+    {
+        return true;
+    }
 
     return false;
 }

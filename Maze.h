@@ -59,9 +59,9 @@ class Maze
         bool isBox(const std::pair<int, int>& position) const;
         bool isGoal(const std::pair<int, int>& position) const;
         bool isFree(const std::pair<int, int>& position) const;
+        bool isDeadlock(const std::pair<int, int>& position) const;
 
-        bool isDeadlock(const std::pair<int, int>& box) const;
-        bool isDeadlockMaze(const std::vector<std::pair<int, int>>& boxes) const;
+        bool checkDeadlockLogic(const std::pair<int, int>& position) const;
 
         bool pushBox(const std::pair<int, int>& position, char dir);
 
