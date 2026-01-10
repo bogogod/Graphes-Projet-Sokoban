@@ -2,7 +2,7 @@
 #include <iostream>
 
 const std::string basePath = "/";
-regee
+
 GraphicAllegro5::GraphicAllegro5(int _resX, int _resY)
     : resX(_resX), resY(_resY)
 {
