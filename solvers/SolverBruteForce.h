@@ -7,7 +7,6 @@
 class SolverBruteForce
 {
 public:
-    // Méthode statique ou d'instance, ici statique car pas d'état interne au solveur
     static std::vector<char> solve(const Maze& startNode, int maxLen);
 };
 

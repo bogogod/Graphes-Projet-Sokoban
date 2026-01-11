@@ -4,13 +4,14 @@
 #include <iostream>
 #include "solvers/SolverBruteForce.h"
 #include "solvers/HeuristicUtils.h"
+#include "solvers/SolverDFS.h"
 
 GraphicAllegro5 graphic(1024, 768);
 
 
 int main()
 {
-    const std::string level = "levels/easy1.txt";
+    const std::string level = "levels/easy5.txt";
     Maze m(level);
 
     graphic.show();
@@ -48,6 +49,13 @@ int main()
             if (m.isSolution()) {
                 std::cout << "Etat resolu (heuristique devrait etre 0)" << std::endl;
             }
+        }
+
+        if (graphic.keyGet(ALLEGRO_KEY_D))
+        {
+            std::vector<char> sol = SolverDFS::solve(m, 200); 
+    
+            if (!sol.empty()) m.playSolution(graphic, sol);
         }
 
         // Check solved

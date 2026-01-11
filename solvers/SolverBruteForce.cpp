@@ -10,14 +10,12 @@ std::vector<char> SolverBruteForce::solve(const Maze& start, int maxLen)
     {
         std::cout << "Test des sequences de " << len << " coups..." << std::endl;
 
-        // Attention: pow peut être lourd, une boucle simple ou bitshift est mieux, 
-        // mais gardons ta logique originale pour l'instant
         long long total = 1;
         for (int i = 0; i < len; ++i) total *= 4;
 
         for (long long code = 0; code < total; ++code)
         {
-            Maze m = start; // Copie du labyrinthe
+            Maze m = start; 
             std::vector<char> seq;
             seq.reserve(len);
 
@@ -39,5 +37,5 @@ std::vector<char> SolverBruteForce::solve(const Maze& start, int maxLen)
             }
         }
     }
-    return {}; // Retourne un vecteur vide si rien trouvé
+    return {}; 
 }
