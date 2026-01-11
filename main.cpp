@@ -5,13 +5,14 @@
 #include "solvers/SolverBruteForce.h"
 #include "solvers/HeuristicUtils.h"
 #include "solvers/SolverDFS.h"
+#include "solvers/SolverGreedyBFS.h"
 
 GraphicAllegro5 graphic(1024, 768);
 
 
 int main()
 {
-    const std::string level = "levels/easy5.txt";
+    const std::string level = "levels/Medium1.txt";
 
     Maze m(level);
 
@@ -52,9 +53,18 @@ int main()
             }
         }
 
+        //DFS
         if (graphic.keyGet(ALLEGRO_KEY_D))
         {
             std::vector<char> sol = SolverDFS::solve(m, 200);
+
+            if (!sol.empty()) m.playSolution(graphic, sol);
+        }
+
+        //Greedy - Best First Search
+        if (graphic.keyGet(ALLEGRO_KEY_G))
+        {
+            std::vector<char> sol = SolverGreedyBFS::solve(m);
 
             if (!sol.empty()) m.playSolution(graphic, sol);
         }
