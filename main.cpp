@@ -12,6 +12,7 @@ GraphicAllegro5 graphic(1024, 768);
 int main()
 {
     const std::string level = "levels/easy5.txt";
+
     Maze m(level);
 
     graphic.show();
@@ -53,8 +54,8 @@ int main()
 
         if (graphic.keyGet(ALLEGRO_KEY_D))
         {
-            std::vector<char> sol = SolverDFS::solve(m, 200); 
-    
+            std::vector<char> sol = SolverDFS::solve(m, 200);
+
             if (!sol.empty()) m.playSolution(graphic, sol);
         }
 
