@@ -64,3 +64,16 @@
 	<set>
 	<string>
 
+1768145687 source:c:\users\bogom\unipdf\3eme annee\graphs\sokoban_base_09_12_2025\solvers\solvergreedybfs.cpp
+	"SolverGreedyBFS.h"
+	"HeuristicUtils.h"
+	<queue>
+	<iostream>
+	<set>
+
+1768145621 c:\users\bogom\unipdf\3eme annee\graphs\sokoban_base_09_12_2025\solvers\solvergreedybfs.h
+	<vector>
+	<string>
+	<set>
+	"../Maze.h"
+
