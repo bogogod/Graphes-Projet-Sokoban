@@ -102,6 +102,12 @@ void Maze::draw(GraphicAllegro5& g) const
 
 bool Maze::isWall(const std::pair<int, int>& position) const
 {
+    if (position.first < 0 || position.first >= (int)this->m_lig || 
+        position.second < 0 || position.second >= (int)this->m_col)
+    {
+        return true; // Hors map = Mur
+    }
+
     if (this->m_field[position.first][position.second].sprite == SpriteType::WALL)
     {
         return true;
@@ -112,6 +118,12 @@ bool Maze::isWall(const std::pair<int, int>& position) const
 
 bool Maze::isBox(const std::pair<int, int>& position) const
 {
+    if (position.first < 0 || position.first >= (int)this->m_lig || 
+        position.second < 0 || position.second >= (int)this->m_col)
+    {
+        return false;
+    }
+
     if (this->m_field[position.first][position.second].sprite == SpriteType::BOX
         || this->m_field[position.first][position.second].sprite == SpriteType::BOX_PLACED)
     {
@@ -123,6 +135,12 @@ bool Maze::isBox(const std::pair<int, int>& position) const
 
 bool Maze::isGoal(const std::pair<int, int>& position) const
 {
+    if (position.first < 0 || position.first >= (int)this->m_lig || 
+        position.second < 0 || position.second >= (int)this->m_col)
+    {
+        return false;
+    }
+
     if (this->m_field[position.first][position.second].sprite == SpriteType::GOAL
         || this->m_field[position.first][position.second].sprite == SpriteType::BOX_PLACED)
     {
@@ -134,6 +152,12 @@ bool Maze::isGoal(const std::pair<int, int>& position) const
 
 bool Maze::isFree(const std::pair<int, int>& position) const
 {
+    if (position.first < 0 || position.first >= (int)this->m_lig || 
+        position.second < 0 || position.second >= (int)this->m_col)
+    {
+        return false;
+    }
+
     if (this->m_field[position.first][position.second].sprite == SpriteType::GROUND
         || this->m_field[position.first][position.second].sprite == SpriteType::GOAL
         || this->m_field[position.first][position.second].sprite == SpriteType::DEADLOCK)
@@ -271,10 +295,28 @@ bool Maze::checkDeadlockLogic(const std::pair<int, int>& position) const
 
 bool Maze::isDeadlock(const std::pair<int, int>& position) const
 {
+    if (position.first < 0 || position.first >= (int)this->m_lig || 
+        position.second < 0 || position.second >= (int)this->m_col)
+    {
+        return false;
+    }
+
     if (this->m_field[position.first][position.second].sprite == SpriteType::DEADLOCK)
     {
         return true;
     }
+
+    // Check if position is already on a goal
+    if (this->isGoal(position))
+        return false;
+
+    bool topWall = this->isWall({position.first - 1, position.second});
+    bool bottomWall = this->isWall({position.first + 1, position.second});
+    bool leftWall = this->isWall({position.first, position.second - 1});
+    bool rightWall = this->isWall({position.first, position.second + 1});
+
+    if ((topWall || bottomWall) && (leftWall || rightWall))
+        return true;
 
     return false;
 }
