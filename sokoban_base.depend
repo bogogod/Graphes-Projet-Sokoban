@@ -12,7 +12,7 @@
 	<iostream>
 	<vector>
 
-1768143221 source:c:\users\bogom\unipdf\3eme annee\graphs\sokoban_base_09_12_2025\main.cpp
+1768146746 source:c:\users\bogom\unipdf\3eme annee\graphs\sokoban_base_09_12_2025\main.cpp
 	"Maze.h"
 	"GraphicAllegro5.h"
 	<vector>
@@ -20,6 +20,7 @@
 	"solvers/SolverBruteForce.h"
 	"solvers/HeuristicUtils.h"
 	"solvers/SolverDFS.h"
+	"solvers/SolverGreedyBFS.h"
 
 1768143221 c:\users\bogom\unipdf\3eme annee\graphs\sokoban_base_09_12_2025\maze.h
 	<string>
@@ -64,7 +65,7 @@
 	<set>
 	<string>
 
-1768145687 source:c:\users\bogom\unipdf\3eme annee\graphs\sokoban_base_09_12_2025\solvers\solvergreedybfs.cpp
+1768148230 source:c:\users\bogom\unipdf\3eme annee\graphs\sokoban_base_09_12_2025\solvers\solvergreedybfs.cpp
 	"SolverGreedyBFS.h"
 	"HeuristicUtils.h"
 	<queue>

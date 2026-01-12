@@ -3,3 +3,6 @@ dll/
 bin/
 *.exe
 .vscode/
+images/
+levels/
+obj/

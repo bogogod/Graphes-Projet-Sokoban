@@ -50,6 +50,14 @@
 		<Unit filename="Maze.cpp" />
 		<Unit filename="Maze.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="solvers/HeuristicUtils.cpp" />
+		<Unit filename="solvers/HeuristicUtils.h" />
+		<Unit filename="solvers/SolverBruteForce.cpp" />
+		<Unit filename="solvers/SolverBruteForce.h" />
+		<Unit filename="solvers/SolverDFS.cpp" />
+		<Unit filename="solvers/SolverDFS.h" />
+		<Unit filename="solvers/SolverGreedyBFS.cpp" />
+		<Unit filename="solvers/SolverGreedyBFS.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

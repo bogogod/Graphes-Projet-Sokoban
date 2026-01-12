@@ -12,7 +12,7 @@ GraphicAllegro5 graphic(1024, 768);
 
 int main()
 {
-    const std::string level = "levels/Medium1.txt";
+    const std::string level = "levels/Easy4.txt";
 
     Maze m(level);
 
